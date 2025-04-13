@@ -21,6 +21,6 @@
 
 # RN
 
-- [ ] O usuário só pode visualizar, editar e apagar as refeições o qual ele criou
+- [ ] O usuário só pode visualizar, editar e apagar as refeições as quais ele criou
 - [ ] Deve ser possível identificar o usuário entre as requisições
 
