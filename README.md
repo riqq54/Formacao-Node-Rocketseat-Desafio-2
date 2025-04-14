@@ -1,7 +1,8 @@
 # RF
 
-- [ ] Deve ser possível criar um usuário
-- [ ] O usuário deve poder registrar uma refeição feita, com as seguintes informações
+- [X] Deve ser possível criar um usuário
+- [ ] O usuário deve poder registrar uma refeição feita, com as seguintes informações:
+
     *As refeições devem ser relacionadas ao usuário.*
 
     - Nome
