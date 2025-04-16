@@ -1,5 +1,5 @@
 import { FastifyInstance } from "fastify";
-import { z } from "Zod";
+import { number, z } from "Zod";
 import { knex } from "../database";
 import { randomUUID } from "node:crypto";
 import { checkAuth } from "../middlewares/check-auth";
@@ -18,8 +18,6 @@ export async function mealsRoutes(app: FastifyInstance){
         })
 
         const { name, description, had_at, on_diet } = createMealSchema.parse(req.body)
-
-        console.log(had_at.getTime());
 
         const { user_id } = req.cookies
 
@@ -104,6 +102,47 @@ export async function mealsRoutes(app: FastifyInstance){
         }
 
         return res.send({ meal })
+    })
+
+    app.get('/summary', async(req, res) => {
+
+        const { user_id } = req.cookies
+
+        const onDietMeals = await knex('meals').where({
+            user_id,
+            on_diet: true
+        }).count('id', {as: 'total'}).first()
+
+        const offDietMeals = await knex('meals').where({
+            user_id,
+            on_diet: false
+        }).count('id', {as: 'total'}).first()
+
+        let onDietStreak: number = 0
+        let streaks: number[] = [] 
+
+        const meals = await knex('meals').where('user_id', user_id).orderBy('had_at', 'asc')
+
+        meals.forEach((meal) => {
+            if(meal.on_diet == true){
+                onDietStreak++
+            }else{
+                streaks.push(onDietStreak)
+                onDietStreak = 0
+            }
+        })
+
+        const bestOnDietStreak = Math.max(...streaks)
+
+        const summary = {
+            meals: meals.length,
+            onDietMeals: onDietMeals?.total,
+            offDietMeals: offDietMeals?.total,
+            onDietStreak: onDietStreak,
+            bestOnDietStreak: bestOnDietStreak
+        }
+
+        return res.send({summary})
     })
 
     app.delete('/:mealId', async(req, res) => {
