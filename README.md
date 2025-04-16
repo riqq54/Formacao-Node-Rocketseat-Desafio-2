@@ -1,7 +1,7 @@
 # RF
 
 - [X] Deve ser possível criar um usuário
-- [ ] O usuário deve poder registrar uma refeição feita, com as seguintes informações:
+- [X] O usuário deve poder registrar uma refeição feita, com as seguintes informações:
 
     *As refeições devem ser relacionadas ao usuário.*
 
@@ -11,8 +11,8 @@
     - Está dentro ou não da dieta
 
 - [ ] O usuário deve poder editar uma refeição registrada, podendo alterar todos os dados acima
-- [ ] O usuário deve poder apagar uma refeição
-- [ ] O usuário deve poder listar todas as suas refeições
+- [X] O usuário deve poder apagar uma refeição
+- [X] O usuário deve poder listar todas as suas refeições
 - [ ] O usuário deve poder visualizar uma única refeição
 - [ ] O usuário deve poder obter um resumo de suas métricas
     - Quantidade total de refeições registradas
