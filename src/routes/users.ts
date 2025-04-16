@@ -5,6 +5,7 @@ import { randomUUID } from "node:crypto";
 
 export async function usersRoutes(app: FastifyInstance){
     app.post('/', async (req, res) => {
+        
         const createUserSchema = z.object({
             email: z.string().email(),
             password: z.string().min(6)
