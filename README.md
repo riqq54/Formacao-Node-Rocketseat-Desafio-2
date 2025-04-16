@@ -10,10 +10,10 @@
     - Data e Hora
     - Está dentro ou não da dieta
 
-- [ ] O usuário deve poder editar uma refeição registrada, podendo alterar todos os dados acima
+- [X] O usuário deve poder editar uma refeição registrada, podendo alterar todos os dados acima
 - [X] O usuário deve poder apagar uma refeição
 - [X] O usuário deve poder listar todas as suas refeições
-- [ ] O usuário deve poder visualizar uma única refeição
+- [X] O usuário deve poder visualizar uma única refeição
 - [ ] O usuário deve poder obter um resumo de suas métricas
     - Quantidade total de refeições registradas
     - Quantidade total de refeições dentro da dieta
@@ -22,6 +22,6 @@
 
 # RN
 
-- [ ] O usuário só pode visualizar, editar e apagar as refeições as quais ele criou
-- [ ] Deve ser possível identificar o usuário entre as requisições
+- [X] O usuário só pode visualizar, editar e apagar as refeições as quais ele criou
+- [X] Deve ser possível identificar o usuário entre as requisições
 
