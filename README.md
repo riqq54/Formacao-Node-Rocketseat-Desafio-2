@@ -37,7 +37,7 @@ Descobri o método *reduce* dos arrays, que à primeira vista é um pouco assust
 
 A primeiro momento essa foi minha tentativa de resolução:
 
-```
+```javascript
     let onDietStreak: number = 0
     let streaks: number[] = [] 
 
@@ -61,7 +61,7 @@ Assim como o nome diz, esse método possibilita a redução dos elementos de um 
 
 Para simplificar, vamos levar em consideração uma situação na qual precisamos somar todos os números de um array. Seguindo a mesma abordagem da minha tentativa anterior, podemos resolver assim:
 
-```
+```javascript
     const numeros = [1,2,3,5]
     let resultado = 0
 
@@ -72,7 +72,7 @@ Para simplificar, vamos levar em consideração uma situação na qual precisamo
 
 Mas também podemos resolver utilizando o reduce:
 
-```
+```javascript
     const numeros = [1,2,3,5]
 
     const resultado = numeros.reduce((acumulador, valorAtual) => {
@@ -87,7 +87,7 @@ Funciona como se fosse um loop, cada vez que ele faz uma iteração pelo array e
 Antes de começar, definimos o acumulador valendo 0, então:
 
 - Primeira iteração:
-```
+```javascript
     acumulador = 0, valorAtual = 1 --> 1 //Este valor será assumido pelo acumulador na próxima iteração...
 ```
 - Segunda iteração:
@@ -97,7 +97,7 @@ Antes de começar, definimos o acumulador valendo 0, então:
 
 Diante disso, montei resolução do resumo:
 
-```
+```javascript
     const meals = await knex('meals').where('user_id', user_id).orderBy('had_at', 'asc')
 
     const {bestStreak, currentStreak} = meals.reduce((accumulator, currentValue)=> {
@@ -117,8 +117,8 @@ Diante disso, montei resolução do resumo:
     }, { bestStreak: 0, currentStreak: 0 })
 ```
 
-Como disse anteriormente, os elementos podem ser objetos como é o caso acima, isso também vale para o segundo parâmetro do método! Podemos definir valores iniciais desta forma, crando propriedades para o objeto *accumulator*.
+Como disse anteriormente, os elementos podem ser objetos como é o caso acima, isso também vale para o segundo parâmetro do método! Podemos definir valores iniciais desta forma, criando propriedades para o objeto *accumulator*.
 
-Primeiro, validamos se a refeição estava dentro da dieta e adicionamos 1 à propriedade *currentStreak*, caso contrário, precisamos zerar a *currentStreak*, pois a sequência foi quebrada. Em seguida, validamos se a *currentStreak* é maior que a *bestStreak* se for, se tornoará a melhor!
+Primeiro, validamos se a refeição estava dentro da dieta e adicionamos 1 à propriedade *currentStreak*, caso contrário, precisamos zerar a *currentStreak*, pois a sequência foi quebrada. Em seguida, validamos se a *currentStreak* é maior que a *bestStreak* se for, se tornará a melhor!
 
 Dessa forma, conseguimos manter o estado de ambas as variáveis!
