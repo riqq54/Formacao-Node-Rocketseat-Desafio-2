@@ -16,7 +16,7 @@
 - [X] O usuário deve poder apagar uma refeição
 - [X] O usuário deve poder listar todas as suas refeições
 - [X] O usuário deve poder visualizar uma única refeição
-- [ ] O usuário deve poder obter um resumo de suas métricas
+- [X] O usuário deve poder obter um resumo de suas métricas
     - Quantidade total de refeições registradas
     - Quantidade total de refeições dentro da dieta
     - Quantidade total de refeições fora da dieta
