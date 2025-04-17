@@ -118,28 +118,30 @@ export async function mealsRoutes(app: FastifyInstance){
             on_diet: false
         }).count('id', {as: 'total'}).first()
 
-        let onDietStreak: number = 0
-        let streaks: number[] = [] 
-
         const meals = await knex('meals').where('user_id', user_id).orderBy('had_at', 'asc')
 
-        meals.forEach((meal) => {
-            if(meal.on_diet == true){
-                onDietStreak++
-            }else{
-                streaks.push(onDietStreak)
-                onDietStreak = 0
+        const {bestStreak, currentStreak} = meals.reduce((accumulator, currentValue)=> {
+            
+            if(currentValue.on_diet){
+                accumulator.currentStreak += 1
+            } else {
+                accumulator.currentStreak = 0
             }
-        })
 
-        const bestOnDietStreak = Math.max(...streaks)
+            if(accumulator.currentStreak > accumulator.bestStreak){
+                accumulator.bestStreak = accumulator.currentStreak
+            }
+
+            return accumulator
+
+        }, { bestStreak: 0, currentStreak: 0 })
 
         const summary = {
             meals: meals.length,
             onDietMeals: onDietMeals?.total,
             offDietMeals: offDietMeals?.total,
-            onDietStreak: onDietStreak,
-            bestOnDietStreak: bestOnDietStreak
+            currentOnDietStreak: currentStreak,
+            bestOnDietStreak: bestStreak
         }
 
         return res.send({summary})
