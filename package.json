@@ -2,9 +2,14 @@
   "name": "desafio-2",
   "version": "1.0.0",
   "main": "index.js",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
-    "dev": "tsx watch --env-file=.env src/server.ts",
-    "knex": "node --env-file .env --import tsx ./node_modules/knex/bin/cli.js"
+    "dev": "tsx watch --env-file .env src/server.ts",
+    "knex": "node --env-file .env --import tsx ./node_modules/knex/bin/cli.js",
+    "build": "tsup src --out-dir build",
+    "test": "vitest"
   },
   "keywords": [],
   "author": "",
@@ -14,12 +19,17 @@
     "@fastify/cookie": "^11.0.2",
     "fastify": "^5.3.0",
     "knex": "^3.1.0",
+    "pg": "^8.14.1",
     "zod": "^3.24.2"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
+    "@types/supertest": "^6.0.3",
     "sqlite3": "^5.1.7",
+    "supertest": "^7.1.0",
+    "tsup": "^8.4.0",
     "tsx": "^4.19.3",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.1"
   }
 }

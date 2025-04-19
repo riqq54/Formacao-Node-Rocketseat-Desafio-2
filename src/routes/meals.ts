@@ -8,7 +8,7 @@ export async function mealsRoutes(app: FastifyInstance){
 
     app.addHook('preHandler', checkAuth)
 
-    app.post('/', async (req, res) => {
+    app.post('/', async(req, res) => {
         
         const createMealSchema = z.object({
             name: z.string(),
@@ -74,7 +74,7 @@ export async function mealsRoutes(app: FastifyInstance){
 
     })
 
-    app.get('/', async (req, res) => {
+    app.get('/', async(req, res) => {
         
         const { user_id } = req.cookies
 
